@@ -120,18 +120,16 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier){
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(route="welcome")
+                        navController.navigate("welcome") {
+                            popUpTo("welcome") { inclusive = true }
+                        }
                     },
                     modifier = Modifier
                         .fillMaxSize()
                         .clip(RoundedCornerShape(25.dp))
                         .background(Color(0xFFEDEBFF)),
                 ) {
-                    Text(
-                        text = "Sign Up",
-                        color = Color(0xFFFFFFFF),
-                        fontSize = 16.sp
-                    )
+                    Text(text = "Sign Up", color = Color(0xFFFFFFFF), fontSize = 16.sp)
                 }
             }
 

@@ -76,7 +76,9 @@ fun LoginScreen(navController: NavController, modifier: Modifier = Modifier) {
             // Login
             Button(
                 onClick = {
-                    navController.navigate(route="welcome")
+                    navController.navigate("welcome") {
+                        popUpTo("welcome") { inclusive = true }
+                    }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -84,11 +86,7 @@ fun LoginScreen(navController: NavController, modifier: Modifier = Modifier) {
                     .clip(RoundedCornerShape(25.dp))
                     .background(Color(0xFF5E4AE3)),
             ) {
-                Text(
-                    text = "Login",
-                    color = Color.White,
-                    fontSize = 16.sp
-                )
+                Text(text = "Login", color = Color.White, fontSize = 16.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -96,7 +94,7 @@ fun LoginScreen(navController: NavController, modifier: Modifier = Modifier) {
             // Sign up
             Button(
                 onClick = {
-                    navController.navigate(route="singup")
+                    navController.navigate("signup")
                 },
                 modifier = Modifier
                     .fillMaxWidth()
