@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.sp
 import com.example.login_app.ui.theme.Login_appTheme
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import java.lang.reflect.Modifier
 
 @Composable
 fun LoginScreen(navController: NavController, modifier: Modifier = Modifier) {
