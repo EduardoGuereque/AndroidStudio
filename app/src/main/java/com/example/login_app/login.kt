@@ -75,7 +75,7 @@ fun LoginScreen(navController: NavController, modifier: Modifier = Modifier) {
             // Login
             Button(
                 onClick = {
-                    navController.navigate("welcome") {
+                    navController.navigate("contactos") {
                         popUpTo("welcome") { inclusive = true }
                     }
                 },
@@ -132,7 +132,7 @@ fun LoginScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Iconos
+            // iconos
             Row(
                 horizontalArrangement = Arrangement.spacedBy(20.dp)
             ) {

@@ -35,6 +35,9 @@ class MainActivity : ComponentActivity() {
                         composable("signup") {
                             SingUpScreen(navController)
                         }
+                        composable("contactos") {
+                            ContactosScreen(navController)
+                        }
                     }
                 }
             }

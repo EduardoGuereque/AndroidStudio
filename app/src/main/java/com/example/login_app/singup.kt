@@ -41,20 +41,17 @@ import com.example.login_app.ui.theme.Login_appTheme
 @Composable
 fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
 
-    // 1. Estados para guardar lo que el usuario escribe
     var nombre by remember { mutableStateOf("") }
     var correo by remember { mutableStateOf("") }
     var contrasena by remember { mutableStateOf("") }
     var confirmarContrasena by remember { mutableStateOf("") }
     var numero by remember { mutableStateOf("") }
 
-    // 2. Lógica de validaciones
     val isNameValid = nombre.isNotBlank() && nombre.all { it.isLetter() || it.isWhitespace() }
     val isEmailValid = correo.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(correo).matches()
     val isPhoneValid = numero.length == 10 && numero.all { it.isDigit() }
     val isPasswordValid = contrasena.isNotBlank() && contrasena == confirmarContrasena
 
-    // El formulario solo es válido si TODAS las condiciones se cumplen
     val isFormValid = isNameValid && isEmailValid && isPhoneValid && isPasswordValid
 
     Box(
@@ -74,7 +71,7 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(20.dp))
 
             Image(
-                painter = painterResource(R.drawable.sing_img), // Asegúrate de tener esta imagen en tus recursos
+                painter = painterResource(R.drawable.sing_img),
                 contentDescription = null,
                 modifier = Modifier.size(200.dp)
             )
@@ -90,11 +87,10 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Campo Nombre
+            // nombre
             OutlinedTextField(
                 value = nombre,
                 onValueChange = { newValue ->
-                    // Forzamos a que el usuario solo pueda teclear letras o espacios
                     if (newValue.all { it.isLetter() || it.isWhitespace() }) {
                         nombre = newValue
                     }
@@ -106,7 +102,7 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Campo Correo
+            // correo
             OutlinedTextField(
                 value = correo,
                 onValueChange = { correo = it },
@@ -118,7 +114,7 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Campo Contraseña
+            // contraseña
             OutlinedTextField(
                 value = contrasena,
                 onValueChange = { contrasena = it },
@@ -130,7 +126,7 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Nuevo Campo: Confirmar Contraseña
+            // confirmar contraseña
             OutlinedTextField(
                 value = confirmarContrasena,
                 onValueChange = { confirmarContrasena = it },
@@ -143,11 +139,10 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Campo Número
+            // numero
             OutlinedTextField(
                 value = numero,
                 onValueChange = { newValue ->
-                    // Forzamos a que solo se tecleen números y máximo 10 caracteres
                     if (newValue.length <= 10 && newValue.all { it.isDigit() }) {
                         numero = newValue
                     }
@@ -160,7 +155,7 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            // Botón Sign up
+            // Botón singup
             Box(
                 modifier = Modifier
                     .width(150.dp)
@@ -170,15 +165,15 @@ fun SingUpScreen(navController: NavController, modifier: Modifier = Modifier) {
             ) {
                 Button(
                     onClick = {
-                        navController.navigate("welcome") {
-                            popUpTo("welcome") { inclusive = true } // Limpia la pila de navegación
+                        navController.navigate("contactos") {
+                            popUpTo("welcome") { inclusive = true }
                         }
                     },
-                    enabled = isFormValid, // ¡Aquí se desactiva si no es válido!
+                    enabled = isFormValid,
                     modifier = Modifier.fillMaxSize(),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF5E4AE3), // Color activo
-                        disabledContainerColor = Color.LightGray, // Color inactivo
+                        containerColor = Color(0xFF5E4AE3),
+                        disabledContainerColor = Color.LightGray,
                         contentColor = Color.White,
                         disabledContentColor = Color.DarkGray
                     )
